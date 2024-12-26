@@ -8,16 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IsAdmin
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
-    
     {
         if (!auth()->user() || !auth()->user()->isAdmin()) {
-            return redirect('/home'); // or any other page
+            return redirect('/home'); // Redirect to home or any other page
         }
         return $next($request);
     }
